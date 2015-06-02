@@ -9,7 +9,9 @@
 
                     <div class="panel-body">
                        Created in {{$user->created_at}}
-                    </div>
+
+
+                                      </div>
                 </div>
             </div>
         </div>

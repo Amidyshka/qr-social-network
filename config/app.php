@@ -135,7 +135,8 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-
+		'Collective\Html\HtmlServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
@@ -145,7 +146,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'Cmgmyr\Messenger\MessengerServiceProvider',
-
+		'SimpleSoftwareIO\QrCode\QrCodeServiceProvider',
 	],
 
 	/*
@@ -193,7 +194,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-
+		'QrCode' => 'SimpleSoftwareIO\QrCode\Facades\QrCode',
+		'Form' => 'Collective\Html\FormFacade',
+		'Html' => 'Collective\Html\HtmlFacade',
+		'Image' => 'Intervention\Image\Facades\Image',
 	],
 
 ];

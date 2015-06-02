@@ -42,6 +42,13 @@
 						</div>
 
 						<div class="form-group">
+							<label class="col-md-4 control-label">About</label>
+							<div class="col-md-6">
+								<textarea class="form-control" name="info" > {{ old('info') }}</textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
 							<label class="col-md-4 control-label">Password</label>
 							<div class="col-md-6">
 								<input type="password" class="form-control" name="password">

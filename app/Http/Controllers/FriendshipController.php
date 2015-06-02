@@ -1,14 +1,10 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Auth;
 use App\User;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 
-class UserController extends Controller {
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+class FriendshipController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -17,7 +13,13 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$not_friends = User::where('id', '!=', Auth::user()->id);
+		if (Auth::user()->friends->count()) {
+			$not_friends->whereNotIn('id', d);
+		}
+		$not_friends = $not_friends->get();
+
+		return View('friends')->with('not_friends', $not_friends);
 	}
 
 	/**
@@ -48,8 +50,7 @@ class UserController extends Controller {
 	 */
 	public function show($id)
 	{
-		$user = User::find($id);
-		return view('user', array('user' => $user));
+		//
 	}
 
 	/**
@@ -75,21 +76,29 @@ class UserController extends Controller {
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Remove Friend
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		//
+		$user = User::find(Auth::user()->id);
+		$friend = User::find($id);
+		$user->removeFriend($friend);
+		return redirect()->back();
 	}
-
-	public function qrauth(Request $request){
-		$tok = $request->input('qr');
-		$user = User::where('password', '=', $tok)->firstOrFail();
-
-		Auth::loginUsingId($user->id);
-		return redirect('/home');
+	/**
+	 * Add friend
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function add($id)
+	{
+		$user = User::find(Auth::user()->id);
+		$friend = User::find($id);
+		$user->addFriend($friend);
+		return redirect()->back();
 	}
 }
