@@ -15,6 +15,7 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 Route::get('friends', 'FriendshipController@index');
+Route::get('people', 'FriendshipController@index');
 Route::get('friends/del/{id}', 'FriendshipController@destroy');
 Route::get('friends/add/{id}', 'FriendshipController@add');
 

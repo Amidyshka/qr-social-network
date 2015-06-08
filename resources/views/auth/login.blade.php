@@ -59,4 +59,6 @@
 		</div>
 	</div>
 </div>
+<script src="/js/main.js"></script>
+<script src="/js/lib/html5-qrcode.min.js"></script>
 @endsection

@@ -15,14 +15,22 @@ class FriendshipController extends Controller {
 	{
 		$not_friends = User::where('id', '!=', Auth::user()->id);
 		if (Auth::user()->friends->count()) {
-			$not_friends->whereNotIn('id', d);
+			$not_friends->whereNotIn('id', Auth::user()->friends->modelKeys());
 		}
 		$not_friends = $not_friends->get();
 
 		return View('friends')->with('not_friends', $not_friends);
 	}
-
 	/**
+	 * Display a listing of app people.
+	 *
+	 * @return Response
+	 */
+	public function people()
+	{
+
+	}
+	/**-
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
