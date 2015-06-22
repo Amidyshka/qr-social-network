@@ -266,6 +266,10 @@ th {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.hide {
+  display: none;
+}
 .glyphicon-asterisk:before {
   content: "\2a";
 }

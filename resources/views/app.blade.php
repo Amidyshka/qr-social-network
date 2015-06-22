@@ -12,12 +12,14 @@
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
     <!-- Bootstrap 3.3.4 -->
     <link href="{{ asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">
     <!-- FontAwesome 4.3.0 -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons 2.0.0 -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{asset('dist/css/AdminLTE.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('dist/css/ekko-lightbox.min.css')}}" rel="stylesheet" type="text/css"/>
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link href="{{asset('dist/css/skins/_all-skins.min.css')}}" rel="stylesheet" type="text/css" />
@@ -25,6 +27,16 @@
     <link href="{{asset('plugins/iCheck/flat/blue.css')}}" rel="stylesheet" type="text/css" />
     <!-- bootstrap wysihtml5 - text editor -->
     <link href="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- Scripts -->
+    <script src="{{asset('/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+    <!-- jQuery UI 1.11.2 -->
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="{{asset('/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,6 +46,7 @@
     <![endif]-->
 </head>
 <body>
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -68,6 +81,7 @@
                            aria-expanded="false">{{ Auth::user()->name }} {{Auth::user()->s_name}} <span
                                     class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/user/settings') }}">Settings</a></li>
                             <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
                         </ul>
                     </li>
@@ -76,19 +90,14 @@
         </div>
     </div>
 </nav>
-
+@if (Session::has('error_message'))
+    <div class="alert alert-danger" role="alert">
+        {!! Session::get('error_message') !!}
+    </div>
+@endif
 @yield('content')
 
-<!-- Scripts -->
-<script src="{{asset('/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
-<!-- jQuery UI 1.11.2 -->
-<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button);
-</script>
-<!-- Bootstrap 3.3.2 JS -->
-<script src="{{asset('/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+
 <!-- Morris.js charts -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="/plugins/morris/morris.min.js" type="text/javascript"></script>
@@ -112,11 +121,19 @@
 <script src='/plugins/fastclick/fastclick.min.js'></script>
 <!-- AdminLTE App -->
 <script src="/dist/js/app.min.js" type="text/javascript"></script>
+<script src="/dist/js/ekko-lightbox.min.js" type="text/javascript"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>
 
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/locale/bootstrap-table-en-US.min.js"></script>
+<script src="/js/link.js" type="text/javascript"></script>
+
+<script src="/js/main.js" type="text/javascript"></script>
 
 @if (Auth::guest())
     <!-- jQuery 2.1.4 -->
-
+    <script src="/js/lib/html5-qrcode.min.js"></script>
 @endif
 </body>
 </html>

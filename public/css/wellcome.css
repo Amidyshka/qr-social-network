@@ -7,32 +7,37 @@ body {
     display: table;
     font-weight: 100;
     font-family: 'Lato';
+    background-color: rgba(0, 0, 0, 0.36);
     background-image: url("/img/bg.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
 }
 
 .container {
     text-align: center;
-
+    background-color: rgba(0, 0, 0, 0.36);
     vertical-align: middle;
 }
 
 .content {
     text-align: center;
     display: inline-block;
-
+    background-color: rgba(0, 0, 0, 0.36);
     padding: 20px;
 }
 
 .title {
     font-size: 96px;
     margin-bottom: 40px;
+    text-shadow: 2px 2px #040A6E;
 }
 
 .quote {
     font-size: 26px;
+
+    text-shadow: 2px 2px #000000;
 }
 a{
     text-decoration: none;

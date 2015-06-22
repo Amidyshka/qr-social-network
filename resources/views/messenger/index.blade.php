@@ -6,6 +6,11 @@
             {!! Session::get('error_message') !!}
         </div>
     @endif
+    @if (Session::has('success_message'))
+        <div class="alert alert-success" role="alert">
+            {!! Session::get('success_message') !!}
+        </div>
+    @endif
     @if($threads->count() > 0)
         @foreach($threads as $thread)
 
@@ -21,6 +26,9 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     {!! $thread->latestMessage->body !!}
+                    <br>
+                    <a href="dialog/del/{!! $thread->id !!}" class="label label-sm label-danger"
+                       onclick="return confirm('Are you sure delete dialog?')"> delete dialog</a>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
 

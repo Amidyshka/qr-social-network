@@ -1,5 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+
+use App\Photo;
+use App\Post;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +35,11 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$posts = Post::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+		$photos = Photo::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+		$array = ['warning', 'primary', 'info', 'success'];
+
+		return view('home', compact('posts', 'photos', 'array'));
 	}
 
 }
